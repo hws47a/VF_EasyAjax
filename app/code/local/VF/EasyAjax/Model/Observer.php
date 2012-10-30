@@ -1,6 +1,6 @@
 <?php
 /**
- * Open Source Magento Extensions extension
+ * Vladimir Fishchenko extension
  *
  * NOTICE OF LICENSE
  *
@@ -12,31 +12,32 @@
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade
- * the Osme EasyAjax module to newer versions in the future.
- * If you wish to customize the Osme EasyAjax module for your needs
+ * the VF EasyAjax module to newer versions in the future.
+ * If you wish to customize the VF EasyAjax module for your needs
  * please refer to http://www.magentocommerce.com for more information.
  *
- * @category   Osme
- * @package    Osme_EasyAjax
- * @copyright  Copyright (C) 2012 Open Source Magento Extensions (http://github.com/osme)
+ * @category   VF
+ * @package    VF_EasyAjax
+ * @copyright  Copyright (C) 2012 Vladimir Fishchenko (http://fishchenko.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
  * EasyAjax Event Observer
  *
- * @category   Osme
- * @package    Osme_EasyAjax
+ * @category   VF
+ * @package    VF_EasyAjax
  * @subpackage Model
  * @author     Vladimir Fishchenko <hws47a@gmail.com>
  */
-class Osme_EasyAjax_Model_Observer
+class VF_EasyAjax_Model_Observer
 {
-    public function getJson() {
+    public function getJson()
+    {
         if (Mage::app()->getRequest()->isAjax()) {
-            /** @var $messages Osme_EasyAjax_Model_Message_Storage */
+            /** @var $messages VF_EasyAjax_Model_Message_Storage */
             $messages = Mage::getSingleton('easyAjax/message_storage');
-            /** @var $response Osme_EasyAjax_Model_Response */
+            /** @var $response VF_EasyAjax_Model_Response */
             $response = Mage::getModel('easyAjax/response');
             $response->setMessages($messages->getMessages());
             $response->sendResponse();

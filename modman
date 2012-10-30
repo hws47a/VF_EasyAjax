@@ -1,2 +1,2 @@
-code                   app/code/local/Osme/EasyAjax/
-Osme_EasyAjax.xml      app/etc/modules/Osme_EasyAjax.xml
+app/code/local/VF/EasyAjax      app/code/local/VF/EasyAjax
+app/etc/modules/VF_EasyAjax.xml app/etc/modules/VF_EasyAjax.xml

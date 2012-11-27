@@ -30,7 +30,7 @@
  * @subpackage Model
  * @author     Vladimir Fishchenko <vladimir@fishchenko.com>
  */
-class VF_EasyAjax_Model_Response extends Mage_Core_Model_Abstract
+class VF_EasyAjax_Model_Response extends Varien_Object
 {
     /**
      * @var Zend_Controller_Response_Http
@@ -49,5 +49,54 @@ class VF_EasyAjax_Model_Response extends Mage_Core_Model_Abstract
         $this->_response->setBody($this->toJson());
         $this->_response->sendResponse();
         exit;
+    }
+
+    public function loadContent($actionContent, $customContent)
+    {
+        if ($actionContent) {
+            $layout = $this->_loadControllerLayouts();
+            $actionContentData = array();
+            foreach ($actionContent as $_content) {
+                $_block = $layout->getBlock($_content);
+                if ($_block) {
+                    $actionContentData[$_content] = $_block->toHtml();
+                }
+            }
+            if ($actionContentData) {
+                $this->setActionContentData($actionContentData);
+            }
+        }
+    }
+
+    /**
+     * @return Mage_Core_Model_Layout
+     */
+    protected function _loadControllerLayouts()
+    {
+        $layout = Mage::app()->getLayout();
+        $update = $layout->getUpdate();
+        // load default handle
+        $update->addHandle('default');
+        // load store handle
+        $update->addHandle('STORE_'.Mage::app()->getStore()->getCode());
+        // load theme handle
+        $package = Mage::getSingleton('core/design_package');
+        $update->addHandle(
+            'THEME_'.$package->getArea().'_'.$package->getPackageName().'_'.$package->getTheme('layout')
+        );
+        // load action handle
+        $fullActionName = Mage::app()->getRequest()->getRequestedRouteName() . '_' .
+            Mage::app()->getRequest()->getRequestedControllerName() . '_' .
+            Mage::app()->getRequest()->getRequestedActionName();
+        $update->addHandle(strtolower($fullActionName));
+
+        //load updates
+        $update->load();
+        //generate xml
+        $layout->generateXml();
+        //generate layout blocks
+        $layout->generateBlocks();
+
+        return $layout;
     }
 }

@@ -37,12 +37,16 @@ class VF_EasyAjax_Model_Observer
      */
     public function getJson()
     {
-        if (Mage::app()->getRequest()->isAjax()) {
+        if (Mage::getSingleton('easyAjax/core')->isEasyAjax()) {
             /** @var $messages VF_EasyAjax_Model_Message_Storage */
             $messages = Mage::getSingleton('easyAjax/message_storage');
             /** @var $response VF_EasyAjax_Model_Response */
             $response = Mage::getModel('easyAjax/response');
             $response->setMessages($messages->getMessages());
+            $response->loadContent(
+                (array) Mage::app()->getRequest()->getParam('action_content', array()),
+                (array) Mage::app()->getRequest()->getParam('custom_content', array())
+            );
             $response->sendResponse();
         }
     }

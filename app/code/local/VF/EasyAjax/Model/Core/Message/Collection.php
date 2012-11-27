@@ -8,7 +8,7 @@
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/osl-3.0.php
- * 
+ *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade
@@ -23,37 +23,29 @@
  */
 
 /**
- * Message storage model
- * Store all messages
+ * Message collection model
+ * Rewritten for store messages
  *
  * @category   VF
  * @package    VF_EasyAjax
  * @subpackage Model
  * @author     Vladimir Fishchenko <vladimir@fishchenko.com>
  */
-class VF_EasyAjax_Model_Message_Storage
+class VF_EasyAjax_Model_Core_Message_Collection extends Mage_Core_Model_Message_Collection
 {
     /**
-     * @var array
+     * Adding new message to collection
+     *
+     * @param   Mage_Core_Model_Message_Abstract $message
+     *
+     * @return  Mage_Core_Model_Message_Collection
      */
-    protected $_messages = array();
-
-    /**
-     * @param string $code
-     * @param string $type
-     * @return VF_EasyAjax_Model_Message_Storage
-     */
-    public function addMessage($code, $type)
+    public function add(Mage_Core_Model_Message_Abstract $message)
     {
-        $this->_messages[] = array ('code' => $code, 'type' => $type);
+        if (!Mage::getSingleton('easyAjax/core')->isEasyAjax()) {
+            $this->addMessage($message);
+        }
+
         return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getMessages()
-    {
-        return $this->_messages;
     }
 }

@@ -32,6 +32,7 @@
             <core>
                 <rewrite>
                     <message>VF_EasyAjax_Model_Core_Message</message>
+                    <message_collection>VF_EasyAjax_Model_Core_Message_Collection</message_collection>
                 </rewrite>
             </core>
         </models>

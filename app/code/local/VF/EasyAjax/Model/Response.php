@@ -18,7 +18,7 @@
  *
  * @category   VF
  * @package    VF_EasyAjax
- * @copyright  Copyright (C) 2012 Vladimir Fishchenko (http://fishchenko.com)
+ * @copyright  Copyright (C) 2012 Vladimir Fishchenko (http://fishchenko.com/)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -28,13 +28,18 @@
  * @category   VF
  * @package    VF_EasyAjax
  * @subpackage Model
- * @author     Vladimir Fishchenko <hws47a@gmail.com>
+ * @author     Vladimir Fishchenko <vladimir@fishchenko.com>
  */
 class VF_EasyAjax_Model_Response extends Mage_Core_Model_Abstract
 {
-    /** @var Zend_Controller_Response_Http */
+    /**
+     * @var Zend_Controller_Response_Http
+     */
     protected $_response;
 
+    /**
+     * Send response to browser with json content type
+     */
     public function sendResponse()
     {
         $this->_response = Mage::app()->getResponse();

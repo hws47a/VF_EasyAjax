@@ -8,7 +8,9 @@ In the Json response frontend developers can receive:
 * All messages that were added to session
 * Some blocks from current page layout
 * Any block that should be added to special layout xml
-  
+
+CURRENTLY IT WORKS ON 1 MY PROJECT
+
 # How to use:  
   
 For any page url add easy_ajax=1 and this page returns json instead of html.  

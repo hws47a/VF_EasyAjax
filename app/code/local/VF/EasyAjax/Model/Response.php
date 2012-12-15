@@ -66,9 +66,25 @@ class VF_EasyAjax_Model_Response extends Varien_Object
                 $this->setActionContentData($actionContentData);
             }
         }
+
+        if ($customContent) {
+            $layout = $this->_loadCustomLayouts();
+            $customContentData = array();
+            foreach ($customContent as $_content) {
+                $_block = $layout->getBlock($_content);
+                if ($_block) {
+                    $customContentData[$_content] = $_block->toHtml();
+                }
+            }
+            if ($customContentData) {
+                $this->setCustomContentData($customContentData);
+            }
+        }
     }
 
     /**
+     * Load layouts for current controller
+     *
      * @return Mage_Core_Model_Layout
      */
     protected function _loadControllerLayouts()
@@ -89,6 +105,33 @@ class VF_EasyAjax_Model_Response extends Varien_Object
             Mage::app()->getRequest()->getRequestedControllerName() . '_' .
             Mage::app()->getRequest()->getRequestedActionName();
         $update->addHandle(strtolower($fullActionName));
+
+        //load updates
+        $update->load();
+        //generate xml
+        $layout->generateXml();
+        //generate layout blocks
+        $layout->generateBlocks();
+
+        return $layout;
+    }
+
+    /**
+     * Load custom layout
+     *
+     * @return Mage_Core_Model_Layout
+     */
+    protected function _loadCustomLayouts()
+    {
+        $layout = Mage::app()->getLayout();
+        $update = $layout->getUpdate();
+        // load default custom handle
+        $update->addHandle('easy_ajax_default');
+        // load action handle
+        $fullActionName = Mage::app()->getRequest()->getRequestedRouteName() . '_' .
+            Mage::app()->getRequest()->getRequestedControllerName() . '_' .
+            Mage::app()->getRequest()->getRequestedActionName();
+        $update->addHandle('easy_ajax_' . strtolower($fullActionName));
 
         //load updates
         $update->load();

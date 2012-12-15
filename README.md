@@ -14,7 +14,7 @@ In the Json response frontend developers can receive:
 For any page url add easy_ajax=1 and this page returns json instead of html.  
 It returns:  
 1. messages: [{type: , code: }] if on this page some message is added to any session model.  
-2. action_content_data: {} if you add to params action_content[] with block names
+2. action_content_data: {} if you add to params action_content[] with block names  
 3. custom_content_data: {} if you add to params custom_content[] with block names
 
 # Custom layout:
@@ -39,9 +39,9 @@ So with response data you can simple update needed blocks:
 
 # Custom layout example
 
-Add to layout handler \<easy_ajax_default> some block with name "test_default"
-Add to layout handler \<easy_ajax_checkout_cart_add> some block with name "test"
-Add to request 2 additional fields:
+Add to layout handler \<easy_ajax_default> some block with name "test_default"  
+Add to layout handler \<easy_ajax_checkout_cart_add> some block with name "test"  
+Add to request 2 additional fields:  
 * custom_content[0]: test_default
 * custom_content[1]: test
 

@@ -34,6 +34,6 @@ class VF_EasyAjax_Model_Core
 {
     public function isEasyAjax()
     {
-        return Mage::app()->getRequest()->isAjax() && Mage::app()->getRequest()->getParam('easy_ajax', false);
+        return Mage::app()->getRequest()->isXmlHttpRequest() && Mage::app()->getRequest()->getParam('easy_ajax', false);
     }
 }

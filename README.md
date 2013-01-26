@@ -9,7 +9,7 @@ In the Json response frontend developers can receive:
 * Some blocks from current page layout
 * Any block that should be added to special layout xml
 
-CURRENTLY IT WORKS ON 1 MY PROJECT
+CURRENTLY IT WORKS MINIMUM ON 2 PROJECTS
 
 # How to use:  
   
@@ -49,3 +49,19 @@ Add to request 2 additional fields:
 
 You will get response with additional field:
 * custom_content_data: {test_default: "...", test: "..."}
+
+# JS Wrapper for requests
+
+Using `EasyAjax.Request` instead of `Ajax.Request` you don't need to specify easy_ajax=1 param and you can add action_content and custom_content params easy.
+To add action_content and/or custom_content params just add it to options list as arrays.  
+
+Example:
+<pre>        new EasyAjax.Request(href, {
+             method: 'post',
+             action_content: ['cart_sidebar', 'top.links'],
+             parameters: params,
+             onComplete: function (transport) {
+                //some code...
+             }
+         });
+</pre>

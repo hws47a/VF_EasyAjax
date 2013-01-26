@@ -1,2 +1,4 @@
 app/code/local/VF/EasyAjax      app/code/local/VF/EasyAjax
+app/design/frontend/base/default/layout/easy_ajax.xml   app/design/frontend/base/default/layout/easy_ajax.xml
 app/etc/modules/VF_EasyAjax.xml app/etc/modules/VF_EasyAjax.xml
+js/easy_ajax.js js/easy_ajax.js

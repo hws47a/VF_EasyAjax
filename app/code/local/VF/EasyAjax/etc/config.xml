@@ -56,6 +56,13 @@
                 </observers>
             </controller_response_redirect>
         </events>
+        <layout>
+            <updates>
+                <vf_eastAjax>
+                    <file>easy_ajax.xml</file>
+                </vf_eastAjax>
+            </updates>
+        </layout>
     </frontend>
 </config>
 

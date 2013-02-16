@@ -64,5 +64,15 @@
             </updates>
         </layout>
     </frontend>
+    <default>
+        <web>
+            <routers>
+                <json>
+                    <area>frontend</area>
+                    <class>VF_EasyAjax_Controller_Varien_Router_Json</class>
+                </json>
+            </routers>
+        </web>
+    </default>
 </config>
 

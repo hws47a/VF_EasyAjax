@@ -32,8 +32,34 @@
  */
 class VF_EasyAjax_Model_Core
 {
+    /**
+     * is easy ajax request
+     *
+     * @var bool
+     */
+    protected $_isEasyAjax = null;
+
+    /**
+     * Is Easy Ajax Request
+     *
+     * @return bool
+     */
     public function isEasyAjax()
     {
-        return Mage::app()->getRequest()->isXmlHttpRequest() && Mage::app()->getRequest()->getParam('easy_ajax', false);
+        if ($this->_isEasyAjax === null) {
+            $this->_isEasyAjax = Mage::app()->getRequest()->isXmlHttpRequest()
+                && Mage::app()->getRequest()->getParam('easy_ajax', false);
+        }
+        return (bool) $this->_isEasyAjax;
+    }
+
+    /**
+     * Set that is easy ajax request or not
+     *
+     * @param bool $value
+     */
+    public function setEasyAjax($value = true)
+    {
+        $this->_isEasyAjax = (bool) $value;
     }
 }

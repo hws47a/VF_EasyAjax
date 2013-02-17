@@ -9,7 +9,9 @@ In the Json response frontend developers can receive:
 * Some blocks from current page layout
 * Any block that should be added to special layout xml
 
-CURRENTLY IT WORKS MINIMUM ON 2 PROJECTS
+CURRENTLY IT WORKS MINIMUM ON 2 PROJECTS  
+  
+See the example of using Easy Ajax extension: [Ajax Cart extension with only one JS file and without any PHP code](https://github.com/hws47a/VF_AjaxCart).
 
 # How to use:  
   

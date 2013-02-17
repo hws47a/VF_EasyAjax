@@ -19,12 +19,12 @@ It returns:
 2. action_content_data: {} if you add to params action_content[] with block names  
 3. custom_content_data: {} if you add to params custom_content[] with block names
 
-# Custom layout:
+## Custom layout:
 You can use additional layout handlers for easy ajax requests:
 * \<easy_ajax_default> - blocks from it can be loaded from any easy ajax request
 * \<easy_ajax_ROUTE_CONTROLLER_ACTION> - you can specify a layout for each action. blocks from it can be loaded only from ROUTE_CONTROLLER_ACTION request.
   
-# Example  
+## Example  
   
 For add product to cart via Ajax use default add to cart url and add this params:  
 * easy_ajax: 1  
@@ -39,7 +39,7 @@ So with response data you can simple update needed blocks:
 * cart_sidebar with items recently added to cart
 * top.links with count of items near link to My Cart
 
-# Custom layout example
+## Custom layout example
 
 Add to layout handler \<easy_ajax_default> some block with name "test_default"  
 Add to layout handler \<easy_ajax_checkout_cart_add> some block with name "test"  
@@ -50,7 +50,7 @@ Add to request 2 additional fields:
 You will get response with additional field:
 * custom_content_data: {test_default: "...", test: "..."}
 
-# JS Wrapper for requests
+## JS Wrapper for requests
 
 Using `EasyAjax.Request` instead of `Ajax.Request` you don't need to specify easy_ajax=1 param and you can add action_content and custom_content params easy.
 To add action_content and/or custom_content params just add it to options list as arrays.  
@@ -65,3 +65,8 @@ Example:
              }
          });
 </pre>
+
+## RESTful requests  
+  
+Instead of using easy_ajax=1 in params you can use RESTful interface and .json to action name.  
+Example: instead of `customer/account/loginPost?easy_ajax=1` you can use `customer/account/loginPost.json`

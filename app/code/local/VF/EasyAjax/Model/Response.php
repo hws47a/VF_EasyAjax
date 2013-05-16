@@ -133,8 +133,25 @@ class VF_EasyAjax_Model_Response extends Varien_Object
             Mage::app()->getRequest()->getRequestedActionName();
         $update->addHandle('easy_ajax_' . strtolower($fullActionName));
 
-        //load updates
-        $update->load();
+        if (Mage::app()->useCache('layout')){
+            $cacheId = $update->getCacheId().'_easy_ajax';
+            $update->setCacheId($cacheId);
+
+            if (!Mage::app()->loadCache($cacheId)) {
+                foreach ($update->getHandles() as $handle) {
+                    $update->merge($handle);
+                }
+
+                $update->saveCache();
+            } else {
+                //load updates from cache
+                $update->load();
+            }
+        } else {
+            //load updates
+            $update->load();
+        }
+
         //generate xml
         $layout->generateXml();
         //generate layout blocks

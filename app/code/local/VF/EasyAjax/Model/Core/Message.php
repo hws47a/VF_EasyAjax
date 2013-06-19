@@ -35,7 +35,7 @@ class VF_EasyAjax_Model_Core_Message extends Mage_Core_Model_Message
 {
     protected function _factory($code, $type, $class='', $method='')
     {
-        if (Mage::helper('core')->isModuleEnabled('easyAjax') && Mage::getSingleton('easyAjax/core')->isEasyAjax()) {
+        if (Mage::helper('core')->isModuleEnabled('VF_EasyAjax') && Mage::getSingleton('easyAjax/core')->isEasyAjax()) {
             Mage::getSingleton('easyAjax/message_storage')->addMessage($code, $type);
         }
         return parent::_factory($code, $type, $class, $method);

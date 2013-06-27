@@ -43,6 +43,22 @@ class VF_EasyAjax_Model_Response extends Varien_Object
     public function sendResponse()
     {
         $this->_response = Mage::app()->getResponse();
+
+        //check redirect
+        if ($this->_response->isRedirect()) {
+            $headers = $this->_response->getHeaders();
+            $redirect = '';
+            foreach ($headers AS $header) {
+                if ("Location" == $header["name"]) {
+                    $redirect = $header["value"];
+                    break;
+                }
+            }
+            if ($redirect) {
+                $this->setRedirect($redirect);
+            }
+        }
+
         $this->_response->clearHeaders();
         $this->_response->setHeader('Content-Type', 'application/json');
         $this->_response->clearBody();

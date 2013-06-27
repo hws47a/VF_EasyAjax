@@ -17,6 +17,7 @@ To easy update this module later, install it from [Magento Connect](http://www.m
   
 # What's new?  
   
+* Fixed compartability with prototype 1.6 (Magento < 1.6)
 * Fixed checking that module is enabled
 * Fixed compartability with Magento < 1.6
 * Added 'redirect' param with url where controller want to redirect

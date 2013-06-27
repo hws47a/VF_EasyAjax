@@ -24,19 +24,20 @@ EasyAjax.Request = Class.create(Ajax.Request, {
     },
     request: function ($super, url)
     {
-        var params = this.options.parameters;
+        var params = !Object.isString(this.options.parameters) ?
+            this.options.parameters :
+            this.options.parameters.toQueryParams();
 
         //add easy_ajax flat
-        params += params ? '&' : '';
-        params += 'easy_ajax=1';
+        params['easy_ajax']= 1;
 
         //add action content params
         var actionContent = this.action_content;
         if (Object.isString(actionContent)) {
-            customContent = [actionContent];
+            actionContent = [actionContent];
         }
         for (var i = 0; i < actionContent.length; ++i) {
-            params += '&action_content[' + i + ']=' + actionContent[i];
+            params['action_content[' + i + ']'] = actionContent[i];
         }
 
         //add custom content params
@@ -45,7 +46,7 @@ EasyAjax.Request = Class.create(Ajax.Request, {
             customContent = [customContent];
         }
         for (var i = 0; i < customContent.length; ++i) {
-            params += '&custom_content[' + i + ']=' + customContent[i];
+            params['custom_content[' + i + ']'] = customContent[i];
         }
 
         this.options.parameters = params;

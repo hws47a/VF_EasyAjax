@@ -14,7 +14,15 @@ CURRENTLY IT WORKS MINIMUM ON 2 PROJECTS
 See the example of using Easy Ajax extension: [Ajax Cart extension with only one JS file and without any PHP code](https://github.com/hws47a/VF_AjaxCart).  
   
 To easy update this module later, install it from [Magento Connect](http://www.magentocommerce.com/magento-connect/catalog/product/view/id/16401/s/easy-ajax-6790/)
-
+  
+# What's new?  
+  
+* Fixed checking that module is enabled
+* Fixed compartability with Magento < 1.6
+* Added 'redirect' param with url where controller want to redirect
+* Fixed issue with custom layout when cache is enabled
+  
+  
 # How to use:  
   
 For any page url add easy_ajax=1 and this page returns json instead of html.  

@@ -55,6 +55,14 @@
                     </easyAjax_get_json>
                 </observers>
             </controller_response_redirect>
+            <http_response_send_before>
+                <observers>
+                    <easyAjax_get_json>
+                        <class>easyAjax/observer</class>
+                        <method>getJson</method>
+                    </easyAjax_get_json>
+                </observers>
+            </http_response_send_before>
         </events>
         <layout>
             <updates>

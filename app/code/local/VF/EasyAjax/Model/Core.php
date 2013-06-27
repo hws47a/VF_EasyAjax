@@ -40,6 +40,14 @@ class VF_EasyAjax_Model_Core
     protected $_isEasyAjax = null;
 
     /**
+     * Is easy ajax event processed
+     *
+     * @var bool
+     */
+    protected $_proceed = false;
+
+
+    /**
      * Is Easy Ajax Request
      *
      * @return bool
@@ -62,4 +70,27 @@ class VF_EasyAjax_Model_Core
     {
         $this->_isEasyAjax = (bool) $value;
     }
+
+    /**
+     * Is event processed
+     *
+     * @return bool
+     */
+    public function isProceed()
+    {
+        return (bool) $this->_proceed;
+    }
+
+    /**
+     * Set that event processed
+     *
+     * @return $this
+     */
+    public function setProceed()
+    {
+        $this->_proceed = true;
+
+        return $this;
+    }
+
 }

@@ -37,7 +37,9 @@ class VF_EasyAjax_Model_Observer
      */
     public function getJson()
     {
-        if (Mage::getSingleton('easyAjax/core')->isEasyAjax()) {
+        $core = Mage::getSingleton('easyAjax/core');
+        if ($core->isEasyAjax() && !$core->isProceed()) {
+            $core->setProceed();
             /** @var $messages VF_EasyAjax_Model_Message_Storage */
             $messages = Mage::getSingleton('easyAjax/message_storage');
             /** @var $response VF_EasyAjax_Model_Response */

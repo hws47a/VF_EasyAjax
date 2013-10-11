@@ -72,7 +72,7 @@
             </updates>
         </layout>
     </frontend>
-    <default>
+    <!--<default>
         <web>
             <routers>
                 <json>
@@ -81,6 +81,6 @@
                 </json>
             </routers>
         </web>
-    </default>
+    </default>-->
 </config>
 

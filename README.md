@@ -83,3 +83,5 @@ Example:
   
 Instead of using easy_ajax=1 in params you can use RESTful interface and .json to action name.  
 Example: instead of `customer/account/loginPost?easy_ajax=1` you can use `customer/account/loginPost.json`
+
+NOTE: This feature is disabled by default, to enable it just uncomment default/web/routers/json in config.xml

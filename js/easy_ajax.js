@@ -29,7 +29,7 @@ EasyAjax.Request = Class.create(Ajax.Request, {
             this.options.parameters.toQueryParams();
 
         //add easy_ajax flat
-        params['easy_ajax']= 1;
+        params['easy_ajax'] = 1;
 
         //add action content params
         var actionContent = this.action_content;

@@ -42,7 +42,10 @@ class VF_EasyAjax_Model_Core_Message_Collection extends Mage_Core_Model_Message_
      */
     public function add(Mage_Core_Model_Message_Abstract $message)
     {
-        if (!Mage::helper('core')->isModuleEnabled('VF_EasyAjax') || !Mage::getSingleton('easyAjax/core')->isEasyAjax()) {
+        //add massage only if it's not an easy ajax request
+        if (!Mage::helper('core')->isModuleEnabled('VF_EasyAjax')
+            || !Mage::getSingleton('easyAjax/core')->isEasyAjax()
+        ) {
             $this->addMessage($message);
         }
 

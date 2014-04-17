@@ -123,6 +123,10 @@ class VF_EasyAjax_Model_Response extends Varien_Object
         $update->addHandle(strtolower($fullActionName));
 
         //load updates
+        Mage::dispatchEvent(
+            'controller_action_layout_load_before',
+            array('action' => Mage::app()->getFrontController()->getAction(), 'layout' => $layout)
+        );
         $update->load();
         //generate xml
         $layout->generateXml();

@@ -1,0 +1,12 @@
+{
+    "name": "yourvendorname/easy_ajax",
+    "description": "Magento extension to make easy ajax request to the backend from the frontend",
+    "type": "magento-module",
+    "license": "choosealicense",
+    "authors": [
+        {
+            "name": "Vladimir Fishchenko",
+            "email": "vladimir@fishchenko.com"
+        }
+    ]
+}

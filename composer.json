@@ -1,0 +1,13 @@
+{
+    "name": "hws47a/easy_ajax",
+    "description": "Magento extension to make easy ajax request to the backend from the frontend",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage":"https://fishchenko.com/projects/easy-ajax",
+    "authors": [
+        {
+            "name": "Vladimir Fishchenko",
+            "email": "vladimir@fishchenko.com"
+        }
+    ]
+}

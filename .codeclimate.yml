@@ -25,11 +25,10 @@ engines:
         enabled: false
       CleanCode/ElseExpression:
         enabled: false
-  engines:
-    phpcodesniffer:
-      enabled: true
-      config:
-        standard: "Zend"
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "Zend"
 ratings:
   paths:
   - "**.js"

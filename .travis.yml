@@ -30,3 +30,6 @@ after_script:
   - rm composer.json
   - composer require codeclimate/php-test-reporter=0.3.0
   - vendor/bin/test-reporter
+  - composer require "codacy/coverage"="dev-master"
+  - export CODACY_PROJECT_TOKEN="f33184ed94f8469b81c3b9c60314d83c"
+  - php vendor/bin/codacycoverage clover build/logs/clover.xml

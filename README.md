@@ -1,5 +1,9 @@
 # VF_EasyAjax Module
 
+[![Build Status](https://travis-ci.org/hws47a/VF_EasyAjax.svg?branch=master)](https://travis-ci.org/hws47a/VF_EasyAjax)
+[![Code Climate](https://codeclimate.com/github/hws47a/VF_EasyAjax/badges/gpa.svg)](https://codeclimate.com/github/hws47a/VF_EasyAjax)
+[![Test Coverage](https://codeclimate.com/github/hws47a/VF_EasyAjax/badges/coverage.svg)](https://codeclimate.com/github/hws47a/VF_EasyAjax/coverage)
+
 Allows frontend developers send ajax requests for every page and get Json response.  
 You don't need to work with app/code section of Manento and change any PHP code.  
 Make all what you need works via Ajax using only layout xmls, theme templates and javascript.  
@@ -87,3 +91,10 @@ Instead of using easy_ajax=1 in params you can use RESTful interface and .json t
 Example: instead of `customer/account/loginPost?easy_ajax=1` you can use `customer/account/loginPost.json`
 
 NOTE: This feature is disabled by default, to enable it just uncomment default/web/routers/json in config.xml
+
+## Unit Tests
+
+Unit Tests writing is in progress.  
+To run PHP tests use EcomDev_PHPUnit module.  
+To run Js file test use CasperJs.  
+

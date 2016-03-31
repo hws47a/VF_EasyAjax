@@ -21,59 +21,67 @@
  */
 
 /**
- * Message collection model test case
+ * Core message model test case
  *
  * @category   VF
  * @package    VF_EasyAjax
  * @subpackage Test
  * @author     Vladimir Fishchenko <vladimir@fishchenko.com>
  */
-class VF_EasyAjax_Test_Model_Core_Message_Collection
+class VF_EasyAjax_Test_Model_Core_Message
     extends EcomDev_PHPUnit_Test_Case
 {
     /**
-     * Test that messages are not added to collection
-     * when it's easy ajax request
+     * Save all messages to storage if it's an easy ajax request
      *
      * @singleton easyAjax/core
+     * @singleton easyAjax/message_storage
      */
-    public function testSkipAddMessage()
+    public function testStorageAddMessage()
     {
         $this->enableEasyAjax(true);
-        $model = Mage::getModel('core/message_collection');
+        $this->mockModel('easyAjax/message_storage', array('addMessage'))
+            ->replaceByMock('singleton')
+            ->expects($this->exactly(2))
+            ->method('addMessage')
+            ->withConsecutive(
+                array('Success message', 'success'),
+                array('Error message', 'error')
+            );
 
-        $countBefore = count($model->getItems());
-        $message = Mage::getModel('core/message_success');
-        $message->setCode('Some message');
-        $model->add($message);
-        $this->assertEquals($countBefore, count($model->getItems()));
+        $message = Mage::getModel('core/message');
+        $message->success('Success message');
+        $message->error('Error message');
     }
 
     /**
-     * Test that messages are added to collection
+     * Don't save messages to storage
      * when it isn't easy ajax request
      *
      * @singleton easyAjax/core
+     * @singleton easyAjax/message_storage
      */
-    public function testAddMessage()
+    public function testStorageNotAddMessage()
     {
         $this->enableEasyAjax(false);
-        $model = Mage::getModel('core/message_collection');
+        $this->mockModel('easyAjax/message_storage', array('addMessage'))
+            ->replaceByMock('singleton')
+            ->expects($this->never())
+            ->method('addMessage');
 
-        $countBefore = count($model->getItems());
-        $message = Mage::getModel('core/message_success');
-        $message->setCode('Some message');
-        $model->add($message);
-        $this->assertEquals($countBefore + 1, count($model->getItems()));
+        $message = Mage::getModel('core/message');
+        $message->success('Success message');
+        $message->error('Error message');
     }
 
     /**
-     * Test that messages are added to collection
+     * Don't save messages to storage
      * when module is disabled and there is no exception
      *
      * @singleton easyAjax/core
+     * @singleton easyAjax/message_storage
      */
-    public function testModuleDisabled()
+    public function testStorageModuleDisabled()
     {
         $this->mockHelper('core', array('isModuleEnabled'))
             ->replaceByMock('helper')
@@ -89,13 +97,14 @@ class VF_EasyAjax_Test_Model_Core_Message_Collection
             ->method('isEasyAjax')
             ->willThrowException(new Exception('Method doesn\'t exist!'));
 
-        $model = Mage::getModel('core/message_collection');
+        $this->mockModel('easyAjax/message_storage', array('addMessage'))
+            ->replaceByMock('singleton')
+            ->expects($this->never())
+            ->method('addMessage');
 
-        $countBefore = count($model->getItems());
-        $message = Mage::getModel('core/message_success');
-        $message->setCode('Some message');
-        $model->add($message);
-        $this->assertEquals($countBefore + 1, count($model->getItems()));
+        $message = Mage::getModel('core/message');
+        $message->success('Success message');
+        $message->error('Error message');
     }
 
     /**

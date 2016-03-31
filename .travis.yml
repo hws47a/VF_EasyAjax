@@ -2,8 +2,8 @@ sudo: false
 language: php
 php:
   - 5.3
-  - 5.4
-  - 5.5
+#  - 5.4
+#  - 5.5
 #  - 5.6
 #  - hhvm
 #matrix:
@@ -18,7 +18,7 @@ env:
     - MAGENTO_VERSION=magento-mirror-1.9.2.2
 #    - MAGENTO_VERSION=magento-mirror-1.9.1.1
 #    - MAGENTO_VERSION=magento-mirror-1.9.0.1
-    - MAGENTO_VERSION=magento-mirror-1.8.1.0
+#    - MAGENTO_VERSION=magento-mirror-1.8.1.0
 #    - MAGENTO_VERSION=magento-mirror-1.8.0.0
 #    - MAGENTO_VERSION=magento-mirror-1.7.0.2
 addons:
@@ -27,5 +27,4 @@ addons:
 script:
   - curl -sSL https://raw.githubusercontent.com/hws47a/MageTestStand/master/setup.sh | bash
 after_script:
-  - composer require codeclimate/php-test-reporter=0.3.0
-  - vendor/bin/test-reporter
+  - cd ${BUILDENV} && composer require codeclimate/php-test-reporter=0.3.0 && vendor/bin/test-reporter

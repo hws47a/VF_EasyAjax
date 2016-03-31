@@ -1,0 +1,32 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+    checks:
+      CleanCode/StaticAccess:
+        enabled: false
+      Controversial/CamelCaseClassName:
+        enabled: false
+      Controversial/CamelCaseMethodName:
+        enabled: false
+      Controversial/CamelCasePropertyName:
+        enabled: false
+      UnusedFormalParameter:
+        enabled: false
+      CleanCode/ElseExpression:
+        enabled: false
+ratings:
+  paths:
+  - "**.js"
+  - "**.php"
+exclude_paths: []

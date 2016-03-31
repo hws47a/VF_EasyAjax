@@ -82,5 +82,12 @@
             </routers>
         </web>
     </default>-->
+    <phpunit>
+        <suite>
+            <modules>
+                <VF_EasyAjax/>
+            </modules>
+        </suite>
+    </phpunit>
 </config>
 

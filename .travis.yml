@@ -27,5 +27,5 @@ addons:
 script:
   - curl -sSL https://raw.githubusercontent.com/hws47a/MageTestStand/master/setup.sh | bash
 after_script:
-  - composer require codeclimate/php-test-reporter=0.3.0 --dev
+  - composer require codeclimate/php-test-reporter=0.3.0
   - vendor/bin/test-reporter

@@ -10,10 +10,14 @@
             "email": "vladimir@fishchenko.com"
         }
     ],
-    "require": {
-        "magento-hackathon/magento-composer-installer":"*"
-    },
     "require-dev": {
+        "magento-hackathon/magento-composer-installer":"*",
         "ecomdev/ecomdev_phpunit": "*"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+          "url": "https://github.com/EcomDev/EcomDev_PHPUnit.git"
+        }
+    ]
 }

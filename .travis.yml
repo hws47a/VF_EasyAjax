@@ -21,5 +21,11 @@ env:
     - MAGENTO_VERSION=magento-mirror-1.8.1.0
 #    - MAGENTO_VERSION=magento-mirror-1.8.0.0
 #    - MAGENTO_VERSION=magento-mirror-1.7.0.2
+addons:
+    code_climate:
+        repo_token: 0c75e59e69f6cadcbc20900c79ed274b70bfa7044b95addb2e29bcf9f5542ebe
 script:
   - curl -sSL https://raw.githubusercontent.com/hws47a/MageTestStand/master/setup.sh | bash
+after_script:
+  - composer require codeclimate/php-test-reporter --dev
+  - vendor/bin/test-reporter

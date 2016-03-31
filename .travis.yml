@@ -27,8 +27,8 @@ addons:
 script:
   - curl -sSL https://raw.githubusercontent.com/hws47a/MageTestStand/master/setup.sh | bash
 after_script:
-  - mkdir ${TRAVIS_BUILD_DIR}/cc
-  - cp ${TRAVIS_BUILD_DIR}/build/logs/clover.xml ${TRAVIS_BUILD_DIR}/cc/build/logs/clover.xml
-  - cd ${TRAVIS_BUILD_DIR}/cc
+  - ССENV=`mktemp -d /tmp/codeclimate.XXXXXXXX`
+  - mkdir ${ССENV}/build/ && mkdir ${ССENV}/build/logs && cp ${TRAVIS_BUILD_DIR}/build/logs/clover.xml ${ССENV}/build/logs/clover.xml
+  - cd ${ССENV}
   - composer require codeclimate/php-test-reporter=0.3.0
   - vendor/bin/test-reporter

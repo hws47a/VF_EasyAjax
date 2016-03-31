@@ -25,10 +25,6 @@ engines:
         enabled: false
       CleanCode/ElseExpression:
         enabled: false
-  phpcodesniffer:
-    enabled: true
-    config:
-      standard: "Zend"
 ratings:
   paths:
   - "**.js"

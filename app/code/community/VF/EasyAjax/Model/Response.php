@@ -48,7 +48,7 @@ class VF_EasyAjax_Model_Response extends Varien_Object
         if ($this->_response->isRedirect()) {
             $headers = $this->_response->getHeaders();
             $redirect = '';
-            foreach ($headers AS $header) {
+            foreach ($headers as $header) {
                 if ("Location" == $header["name"]) {
                     $redirect = $header["value"];
                     break;
@@ -72,10 +72,10 @@ class VF_EasyAjax_Model_Response extends Varien_Object
         if ($actionContent) {
             $layout = $this->_loadControllerLayouts();
             $actionContentData = array();
-            foreach ($actionContent as $_content) {
-                $_block = $layout->getBlock($_content);
-                if ($_block) {
-                    $actionContentData[$_content] = $_block->toHtml();
+            foreach ($actionContent as $content) {
+                $block = $layout->getBlock($content);
+                if ($block) {
+                    $actionContentData[$content] = $block->toHtml();
                 }
             }
             if ($actionContentData) {
@@ -86,10 +86,10 @@ class VF_EasyAjax_Model_Response extends Varien_Object
         if ($customContent) {
             $layout = $this->_loadCustomLayouts();
             $customContentData = array();
-            foreach ($customContent as $_content) {
-                $_block = $layout->getBlock($_content);
-                if ($_block) {
-                    $customContentData[$_content] = $_block->toHtml();
+            foreach ($customContent as $content) {
+                $block = $layout->getBlock($content);
+                if ($block) {
+                    $customContentData[$content] = $block->toHtml();
                 }
             }
             if ($customContentData) {

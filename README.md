@@ -1,6 +1,7 @@
 # VF_EasyAjax Module
 
 [![Build Status](https://travis-ci.org/hws47a/VF_EasyAjax.svg?branch=master)](https://travis-ci.org/hws47a/VF_EasyAjax)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/293388b1fa664d6ab6f1bed025a963e0)](https://www.codacy.com/app/hws47a/VF_EasyAjax)
 
 Allows frontend developers send ajax requests for every page and get Json response.  
 You don't need to work with app/code section of Manento and change any PHP code.  

@@ -34,8 +34,10 @@ class VF_EasyAjax_Model_Observer
 {
     /**
      * Add Json to response instead of default data
+     *
+     * @param Varien_Event_Observer $observer
      */
-    public function getJson()
+    public function getJson(Varien_Event_Observer $observer)
     {
         $core = Mage::getSingleton('easyAjax/core');
         if ($core->isEasyAjax() && !$core->isProceed()) {
@@ -49,6 +51,17 @@ class VF_EasyAjax_Model_Observer
                 (array) Mage::app()->getRequest()->getParam('action_content', array()),
                 (array) Mage::app()->getRequest()->getParam('custom_content', array())
             );
+
+            //check transport object
+            if ($transport = $observer->getEvent()->getTransport()) {
+                if ($transport->getUrl()) {
+                    $response->setRedirect($transport->getUrl());
+                    if ($transport->getCode()) {
+                        $response->setRedirectCode($transport->getCode());
+                    }
+                }
+            }
+
             $response->sendResponse();
         }
     }

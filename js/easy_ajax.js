@@ -71,3 +71,39 @@ EasyAjax.Request.prototype._prepareContentParams = function (key, options) {
 
     return params;
 };
+
+/**
+ * Automatically update data from url using mapping
+ *
+ * @param string url
+ * @param object mapping
+ */
+EasyAjax.update = function (url, mapping) {
+    var content = [];
+    for (var key in mapping) {
+        if (!mapping.hasOwnProperty(key)) {
+            continue;
+        }
+        content.push(key);
+    }
+  new EasyAjax.Request(url, {
+    method: 'get',
+    action_content: content,
+    onComplete: function (transport) {
+      debugger;
+      var json = transport.responseJSON;
+      if (typeof json.action_content_data === "undefined") {
+        return;
+      }
+      for (key in mapping) {
+        if (!mapping.hasOwnProperty(key)) {
+          continue;
+        }
+        if (!json.action_content_data[key]) {
+            continue;
+        }
+        $$(mapping[key]).invoke('update', json.action_content_data[key]);
+      }
+    }
+  });
+};

@@ -90,7 +90,6 @@ EasyAjax.update = function (url, mapping) {
     method: 'get',
     action_content: content,
     onComplete: function (transport) {
-      debugger;
       var json = transport.responseJSON;
       if (typeof json.action_content_data === "undefined") {
         return;
